@@ -16,6 +16,8 @@ using AddressBookAPI.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using AddressBookAPI.Infrastructure.Repositories;
 using AddressBookAPI.Domain.Model;
+using AutoMapper;
+using AddressBookAPI.Application.Mapping;
 
 namespace AddressBookAPI
 {
@@ -33,6 +35,15 @@ namespace AddressBookAPI
         {
             services.AddDbContext<ApiContext>(options => options.UseInMemoryDatabase(databaseName: "AddressApiDb"));
             services.AddControllers();
+
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddScoped<IAddressBookService, AddressBookService>();
             services.AddScoped<IRepository<Address>, InMemoryRepository<Address>>();
 
