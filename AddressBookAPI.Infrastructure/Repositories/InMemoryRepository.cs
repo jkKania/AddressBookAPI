@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AddressBookAPI.Infrastructure.Repositories
 {
@@ -34,6 +32,11 @@ namespace AddressBookAPI.Infrastructure.Repositories
         public IEnumerable<T> SearchBy(Expression<Func<T, bool>> predicate)
         {
             return _dbSet.Where(predicate).ToList();
+        }
+
+        public IEnumerable<T> GetAll()
+        {
+            return _dbSet;
         }
     }
 }

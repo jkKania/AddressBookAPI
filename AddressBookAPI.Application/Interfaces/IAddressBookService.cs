@@ -10,6 +10,7 @@ namespace AddressBookAPI.Application.Interfaces
     {
         void AddAddress(Address address);
         Address GetLastAddedAddress();
-        IEnumerable<Address> GetAddressByCity(string cityName);
+        IEnumerable<Address> GetAddressesByCity(string cityName);
+        IEnumerable<Address> GetAll();
     }
 }

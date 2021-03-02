@@ -3,7 +3,7 @@ using AddressBookAPI.Domain.Model;
 using AddressBookAPI.Infrastructure;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace AddressBookAPI.Application.Services
 {
@@ -20,7 +20,7 @@ namespace AddressBookAPI.Application.Services
             _repository.Create(address);
         }
 
-        public IEnumerable<Address> GetAddressByCity(string cityName)
+        public IEnumerable<Address> GetAddressesByCity(string cityName)
         {
             return _repository.SearchBy(x => x.City.Equals(cityName));
         }
@@ -28,6 +28,11 @@ namespace AddressBookAPI.Application.Services
         public Address GetLastAddedAddress()
         {
             return _repository.GetLastAdded();
+        }
+
+        public IEnumerable<Address> GetAll()
+        {
+            return _repository.GetAll();
         }
     }
 }

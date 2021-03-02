@@ -43,7 +43,7 @@ namespace AddressBookAPI.Controllers
         {
             _logger.LogInformation("AddressBookController: GetAddressByCity request");
 
-            var address = _addressBookService.GetAddressByCity(cityName);
+            var address = _addressBookService.GetAddressesByCity(cityName);
             if (address == null || !address.Any())
             {
                 return NotFound();

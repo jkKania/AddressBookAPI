@@ -14,5 +14,6 @@ namespace AddressBookAPI.Infrastructure
         void Create(T entity);
         T GetLastAdded();
         IEnumerable<T> SearchBy(Expression<Func<T, bool>> predicate);
+        IEnumerable<T> GetAll();
     }
 }
